@@ -43,8 +43,24 @@
                                                     Select Food Item
                                                 </option>
                                                 {% for item in menu %}
+                                                {% if item.mess_option == 'mess2' %}
                                                 <option value="{{item.dish}}" id="{{item.pk}}">
-                                                    {{item.dish}}-{{item.meal_time}}
+                                                    {% if item.meal_time == 'MB' %}
+                                                        monday <br>{{item.dish}}
+                                                    {% endif %}
+                                                </option>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                            <br>
+                                            <br>
+                                            <select class="ui dropdown" name="dish" id="dish">
+                                                <option>
+                                                    Select Day
+                                                </option>
+                                                {% for item in menu %}  
+                                                <option value="{{item.dish}}" id="{{item.pk}}">
+                                                    {{item.meal_time}}
                                                 </option>
                                                 {% endfor %}
                                             </select>
