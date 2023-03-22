@@ -28,33 +28,36 @@
                         <div class="ui sixteen wide column">
                             <div class="ui active tab" data-tab="changemenu">
                                 <form class="ui form" method="post" action="{% url 'mess:messmenusubmit'%}">
-                                <!--<form class="ui form" method="post" >-->
-                                    {% csrf_token %}
-                                    <div class="ui row">
-                                        <div>
+                                    <!--<form class="ui form" method="post" >-->
+                                        {% csrf_token %}
+                                        <div class="ui row">
+                                            <div>
                                             <label>
                                                 Dish - Meal Time *
                                             </label>
                                             <br>
-
+                                            
 {#                                            <select class="ui fluid search selection dropdown" name="dish" id="dish">#}
-                                            <select class="ui dropdown" name="dish" id="dish">
-                                                <option>
-                                                    Select Food Item
-                                                </option>
-                                                {% for item in menu %}
-                                                {% if item.mess_option == 'mess2' %}
+                                                <select class="ui dropdown" name="dish" id="dish">
+                                                    <option>
+                                                        Select Food Item
+                                                    </option>
+                                                    {% for item in menu %}
+                                                    {% if item.mess_option == 'mess2' %}
+                                                    {% if item.meal_time == 'ML' or item.meal_time == 'TL' %}
                                                 <option value="{{item.dish}}" id="{{item.pk}}">
-                                                    {% if item.meal_time == 'MB' %}
-                                                        monday <br>{{item.dish}}
-                                                    {% endif %}
+                                                   
+                                                    <div>{{item.dish}}</div>
+                                
                                                 </option>
+                                                
+                                                {% endif %}
                                                 {% endif %}
                                                 {% endfor %}
                                             </select>
                                             <br>
                                             <br>
-                                            <select class="ui dropdown" name="dish" id="dish">
+                                            <!-- <select class="ui dropdown" name="dish" id="dish">
                                                 <option>
                                                     Select Day
                                                 </option>
@@ -63,7 +66,7 @@
                                                     {{item.meal_time}}
                                                 </option>
                                                 {% endfor %}
-                                            </select>
+                                            </select> -->
                                             <br>
                                             <br>
                                             <label>
@@ -82,7 +85,7 @@
                                             <div class="ui input">
                                                 <input placeholder="Why?" name="reason" id="reason" required= "true">
                                             </div>
-
+                                            
                                         </div> 
                                     </div>
                                     <div class="ui row">
